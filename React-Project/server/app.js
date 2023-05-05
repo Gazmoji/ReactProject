@@ -9,24 +9,56 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/register", async (req, res) => {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
+  const { username, email, password } = req.body;
 
-  const user = await models.User.build({
-    username: username,
-    email: email,
-    password: password,
-  });
+  try {
+    const existingUser = await models.User.findOne({ where: { email: email } });
+    if (existingUser) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Email already exists." });
+    }
 
-  if (user) {
-    const token = jwt.sign({ username: username, email: email }, "SECRETKEY");
-    await user.save();
+    const user = await models.User.create({
+      username: username,
+      email: email,
+      password: password,
+    });
+
+    res.json({ success: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await models.User.findOne({ where: { email: email } });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid credentials" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign(
+      { username: user.username, email: user.email },
+      "SECRETKEY"
+    );
+
     res.json({ success: true, token: token });
-  } else {
-    res
-      .status(401)
-      .json({ success: false, message: "Username already exists." });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 

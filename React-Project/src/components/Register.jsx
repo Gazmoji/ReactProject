@@ -24,8 +24,6 @@ function Register(props) {
     const result = await response.json();
 
     if (result.success) {
-      localStorage.setItem("jwtToken", result.token);
-      props.onRegister(result.token);
       navigate("/login");
     } else {
       console.log("Error");
@@ -57,9 +55,4 @@ function Register(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onRegister: (token) => dispatch({ type: "ON_REGISTER", payload: token }),
-  };
-};
-export default connect(null, mapDispatchToProps)(Register);
+export default Register;

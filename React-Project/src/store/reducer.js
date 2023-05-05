@@ -3,7 +3,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type == "ON_REGISTER") {
+  if (action.type == "ON_LOGIN") {
     return {
       ...state,
       isAuthenticated: action.payload != null,

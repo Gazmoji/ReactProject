@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage.jsx";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
+import MainContent from "./components/Main-Content.jsx";
 import { createStore } from "redux";
 import reducer from "./store/reducer";
 import { Provider } from "react-redux";
@@ -20,7 +21,7 @@ const store = createStore(
 const token = localStorage.getItem("jwtToken");
 
 if (token) {
-  store.dispatch({ type: "ON_REGISTER", payload: token });
+  store.dispatch({ type: "ON_LOGIN", payload: token });
 }
 
 root.render(
@@ -31,6 +32,7 @@ root.render(
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/main-content" element={<MainContent />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -1,6 +1,8 @@
 import { useNavigate, useNavigation } from "react-router-dom";
+import { useState } from "react";
 
 function Homepage() {
+  const [pokeApi, setPokeApi] = useState[""];
   const navigate = useNavigate();
   const sendToRegister = () => {
     navigate("/register");
