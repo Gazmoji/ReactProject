@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 function Login(props) {
   const [loginInfo, setLoginInfo] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleLoginInfo = (e) => {
@@ -26,41 +27,58 @@ function Login(props) {
 
     if (result.success) {
       localStorage.setItem("jwtToken", result.token);
-      props.onLogin(result.token);
+      props.onLogin(result.token, result.username);
       navigate("/main-content");
     } else {
-      console.log("Error");
+      setErrorMessage("Invalid Login Info.");
     }
   };
   return (
     <>
-      <h2>Log In</h2>
-      <input
-        type="text"
-        name="email"
-        placeholder="Enter your E-mail"
-        onChange={handleLoginInfo}
-      />
-      <input
-        type="username"
-        name="username"
-        placeholder="Enter your Username"
-        onChange={handleLoginInfo}
-      />
-      <input
-        type="text"
-        name="password"
-        placeholder="Enter your Password"
-        onChange={handleLoginInfo}
-      />
-      <button onClick={loginUser}>Log In</button>
+      <div id="boarder">
+        <img src="https://fontmeme.com/permalink/230506/215049b2b1959c91ceeeb8376bdb726e.png" />
+        <h2>
+          <img
+            src="https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/lucario.png"
+            width="110px"
+          />
+          Login Here
+          <img
+            src="https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/gardevoir.png"
+            width="80px"
+          />
+        </h2>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your E-mail"
+          onChange={handleLoginInfo}
+        />
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your Username"
+          onChange={handleLoginInfo}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+          onChange={handleLoginInfo}
+        />
+        <button id="registerbutton2" onClick={loginUser}>
+          Log In
+        </button>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      </div>
     </>
   );
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogin: (token) => dispatch({ type: "ON_LOGIN", payload: token }),
+    onLogin: (token, username) =>
+      dispatch({ type: "ON_LOGIN", payload: { token, username } }),
   };
 };
 

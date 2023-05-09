@@ -3,14 +3,16 @@ const app = express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const models = require("./models");
+const bcrypt = require("bcrypt");
 const authenticate = require("./middlewares/authentication");
 
 app.use(cors());
 app.use(express.json());
 
 app.post("/register", async (req, res) => {
-  const { username, email, password } = req.body;
-
+  const { name, email, password } = req.body;
+  let salt = await bcrypt.genSalt(10);
+  let hashedPassword = await bcrypt.hash(password, salt);
   try {
     const existingUser = await models.User.findOne({ where: { email: email } });
     if (existingUser) {
@@ -20,9 +22,9 @@ app.post("/register", async (req, res) => {
     }
 
     const user = await models.User.create({
-      username: username,
+      name: name,
       email: email,
-      password: password,
+      password: hashedPassword,
     });
 
     res.json({ success: true });
@@ -50,10 +52,7 @@ app.post("/login", async (req, res) => {
         .json({ success: false, message: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { username: user.username, email: user.email },
-      "SECRETKEY"
-    );
+    const token = jwt.sign({ name: user.name, email: user.email }, "SECRETKEY");
 
     res.json({ success: true, token: token });
   } catch (err) {

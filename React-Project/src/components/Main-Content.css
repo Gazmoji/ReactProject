@@ -1,0 +1,104 @@
+li {
+  list-style-type: none;
+}
+
+#card {
+  border: 1px solid black;
+  margin: 10px;
+  width: 130px;
+  height: 170px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#card:hover {
+  border: 4px solid black;
+}
+
+#pokeName {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#pokeImage {
+  margin-top: 20px;
+}
+
+#pokeImage img {
+  width: 120px;
+  height: 120px;
+}
+
+body.main-content {
+  background-color: rgb(255, 153, 1);
+  background-image: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: firebrick;
+  height: 80px;
+  width: 100%;
+  padding: 0 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right a {
+  margin-left: 0px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navbar-right a:hover {
+  color: #ff0000;
+}
+
+.navbar a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 100px;
+  font-weight: bold;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+.navbar a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+#search {
+  border-radius: 10px;
+  border-color: blue;
+  background-color: rgb(197, 197, 28);
+  color: blue;
+}
+
+#navbar-username {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+#allpoke {
+  padding-top: 50px;
+}

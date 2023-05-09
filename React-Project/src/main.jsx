@@ -7,8 +7,10 @@ import Homepage from "./components/Homepage.jsx";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import MainContent from "./components/Main-Content.jsx";
+import Logout from "./components/Logout.jsx";
 import { createStore } from "redux";
 import reducer from "./store/reducer";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -32,7 +34,15 @@ root.render(
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/main-content" element={<MainContent />} />
+          <Route
+            path="/main-content"
+            element={
+              <ProtectedRoute>
+                <MainContent />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </Provider>
