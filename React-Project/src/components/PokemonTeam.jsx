@@ -134,7 +134,9 @@ function PokemonTeam({ pokemonTeam, setYourPokemonTeam }) {
 
   return (
     <>
-      <h2 id="pokeTeam">Your Pokemon Team</h2>
+      <div>
+        <h2 id="pokeTeam">Your Pokemon Team</h2>
+      </div>
       {teamList}
     </>
   );

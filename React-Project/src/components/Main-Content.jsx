@@ -3,7 +3,16 @@ import "./Main-Content.css";
 import PokemonTeam from "./PokemonTeam";
 import NavBar from "./NavBar";
 
+function debounce(fn, delay) {
+  let timerId;
+  return function (...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
 function MainContent() {
+  document.body.className = "maincontent-page";
   const [pokeApi, setPokeApi] = useState([]);
   const [yourPokemonTeam, setYourPokemonTeam] = useState([]);
   const [pokeSearch, setPokeSearch] = useState("");
@@ -51,7 +60,10 @@ function MainContent() {
   };
 
   const handleSearch = (event) => {
-    setPokeSearch(event.target.value.toLowerCase());
+    const debouncedSearch = debounce(() => {
+      setPokeSearch(event.target.value.toLowerCase());
+    }, 500);
+    debouncedSearch();
   };
 
   const filteredPokemon = pokeApi.filter((pokemon) =>
@@ -70,7 +82,7 @@ function MainContent() {
   ));
 
   return (
-    <>
+    <div className="main-content">
       <NavBar />
       <PokemonTeam
         pokemonTeam={yourPokemonTeam}
@@ -87,7 +99,7 @@ function MainContent() {
         />
       </div>
       {pokemonList}
-    </>
+    </div>
   );
 }
 

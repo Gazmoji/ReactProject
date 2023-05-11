@@ -9,7 +9,7 @@ function NavBar(props) {
           src="https://fontmeme.com/permalink/230506/215049b2b1959c91ceeeb8376bdb726e.png"
           width="200px"
         />
-        <span id="navbar-username">{props.username}</span>
+        {props.username && <span id="navbar-username">{props.username}</span>}
         {props.isAuth ? <NavLink to="/logout">Logout</NavLink> : null}
       </nav>
     </>
