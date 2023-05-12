@@ -6,14 +6,15 @@ function Logout(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // remove the token from local storage
+    document.body.className = "";
+  }, []);
+
+  useEffect(() => {
     localStorage.removeItem("jwtToken");
 
-    // update global redux state and set isAuthenticated to false
     props.onLogout();
 
-    // take the user to Login
-    navigate("/login");
+    navigate("/");
   });
 
   return <></>;

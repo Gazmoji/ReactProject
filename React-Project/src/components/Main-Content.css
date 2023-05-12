@@ -90,7 +90,7 @@ li {
 #search {
   border-radius: 10px;
   border-color: blue;
-  background-color: rgb(197, 197, 28);
+  background-color: rgb(197, 82, 28);
   color: blue;
 }
 
@@ -111,6 +111,6 @@ li {
 }
 
 body.maincontent-page {
-  background-image: none;
-  background-color: #e08b0b;
+  background-image: url("https://storage.googleapis.com/webdesignledger.pub.network/LaT/edd/2016/02/seamless-background-textures-15-780x780.jpg");
+  background-repeat: repeat;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -14,6 +14,10 @@ function Login(props) {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    document.body.className = "";
+  }, []);
 
   const loginUser = async () => {
     const response = await fetch("http://localhost:8080/login", {
