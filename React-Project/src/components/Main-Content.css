@@ -114,3 +114,40 @@ body.maincontent-page {
   background-image: url("https://storage.googleapis.com/webdesignledger.pub.network/LaT/edd/2016/02/seamless-background-textures-15-780x780.jpg");
   background-repeat: repeat;
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #card {
+    width: 150px;
+    height: 190px;
+  }
+
+  #pokeName {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+
+  #pokeImage img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar-right a {
+    margin-left: 10px;
+  }
+
+  .navbar a {
+    margin-right: 50px;
+  }
+
+  #search {
+    width: 200px;
+  }
+}
