@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 import { HEROKU_API_ROUTE } from "./Login";
 
 function Register(props) {
@@ -16,7 +17,7 @@ function Register(props) {
   };
 
   const registerUser = async () => {
-    const response = await fetch(`http://${HEROKU_API_ROUTE}/register`, {
+    const response = await fetch(`https://${HEROKU_API_ROUTE}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

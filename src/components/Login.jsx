@@ -18,7 +18,7 @@ function Login(props) {
   };
 
   const loginUser = async () => {
-    const response = await fetch(`http://${HEROKU_API_ROUTE}/login`, {
+    const response = await fetch(`https://${HEROKU_API_ROUTE}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
