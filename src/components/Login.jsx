@@ -15,10 +15,6 @@ function Login(props) {
     });
   };
 
-  useEffect(() => {
-    document.body.className = "";
-  }, []);
-
   const loginUser = async () => {
     const response = await fetch("http://localhost:8080/login", {
       method: "POST",
