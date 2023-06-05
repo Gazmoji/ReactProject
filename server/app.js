@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -8,6 +9,8 @@ const authenticate = require("./middlewares/authentication");
 
 app.use(cors());
 app.use(express.json());
+
+const port = process.env.PORT || 3000;
 
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -61,6 +64,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("Server is running....");
 });
