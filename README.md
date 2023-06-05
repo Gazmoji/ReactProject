@@ -19,7 +19,7 @@ Responsive Design: The app is built with a responsive layout to provide an optim
 User-Friendly Interface: The app features a clean and intuitive interface, making it easy to navigate and use.
    
  ## Live link: 
-[https://weak-against.surge.sh/](https://poke-squad-plus.com)
+[https://poke-squad.herokuapp.com/](https://poke-squad-plus.com)
 
 ## Video Demo Link: 
 
