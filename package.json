@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run vite",
-    "vite": "npm install && vite build",
+    "build": "vite build",
     "heroku-postbuild": "cd server && npm install",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
