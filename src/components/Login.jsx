@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
+export const HEROKU_API_ROUTE = `${process.env.HEROKU_APP_NAME}.herokuapp.com`;
+
 function Login(props) {
   const [loginInfo, setLoginInfo] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,7 +18,7 @@ function Login(props) {
   };
 
   const loginUser = async () => {
-    const response = await fetch("http://localhost:8080/login", {
+    const response = await fetch(`http://${HEROKU_API_ROUTE}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
