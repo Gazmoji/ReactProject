@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
-export const HEROKU_API_ROUTE = `${process.env.HEROKU_APP_NAME}.herokuapp.com`;
+export const HEROKU_API_ROUTE = `poke-squad.herokuapp.com`;
 
 function Login(props) {
   const [loginInfo, setLoginInfo] = useState({});
