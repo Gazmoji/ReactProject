@@ -67,7 +67,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../dist/index.html"));
 });
 
 app.listen(port, () => {
