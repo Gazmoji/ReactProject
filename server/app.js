@@ -6,9 +6,11 @@ const jwt = require("jsonwebtoken");
 const models = require("./models");
 const bcrypt = require("bcrypt");
 const authenticate = require("./middlewares/authentication");
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "dist")));
 
 const port = process.env.PORT || 3000;
 
@@ -62,6 +64,10 @@ app.post("/login", async (req, res) => {
     console.log(err);
     res.status(500).json({ success: false, message: "Server error" });
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 app.listen(port, () => {
