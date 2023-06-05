@@ -10,7 +10,7 @@ const path = require("path");
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, "../dist")));
+app.use(express.static(path.resolve(__dirname, "../public")));
 
 const port = process.env.PORT || 3000;
 
@@ -67,8 +67,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../dist/index.html"));
-  console.log(path.resolve(__dirname, "../dist/index.html"));
+  res.sendFile(path.resolve(__dirname, "../public/index.html"));
 });
 
 app.listen(port, () => {
